@@ -58,6 +58,7 @@ export interface DPTimeConfig {
 
 export interface DPUserConfig {
   selectedDates?: Date[];
+  defaultDate?: Date | null;
   focusDate?: Date | null;
   onDatesChange?(d: Date[]): void;
   locale?: Partial<DPLocaleConfig>;
@@ -70,6 +71,7 @@ export interface DPUserConfig {
 
 export interface DPConfig {
   selectedDates: Date[];
+  defaultDate: Date | null;
   focusDate: Date | null;
   onDatesChange?(d: Date[]): void;
   locale: DPLocaleConfig;
