@@ -12,7 +12,7 @@ import { includeDate } from './predicates';
 export const createConfig = ({
   selectedDates = [],
   focusDate = null,
-  defaultDate = null,
+  forceOffsetDate = null,
   onDatesChange,
   calendar = {},
   dates = {},
@@ -33,7 +33,7 @@ export const createConfig = ({
 
   return {
     selectedDates,
-    defaultDate,
+    forceOffsetDate,
     focusDate: focus,
     onDatesChange,
     calendar: {
