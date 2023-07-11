@@ -1,4 +1,4 @@
-# @rehookify/datepicker
+# use-datepicker-ui - A forked from @rehookify/datepicker with some improvements
 
 The ultimate tiny tool for creating date, range and time pickers in your React applications.
 
@@ -6,16 +6,16 @@ The ultimate tiny tool for creating date, range and time pickers in your React a
 
 [![size](https://img.shields.io/bundlephobia/minzip/@rehookify/datepicker?label=MIN%20%2B%20GZIP&style=for-the-badge)](https://bundlephobia.com/package/@rehookify/datepicker)
 [![npm](https://img.shields.io/npm/dw/@rehookify/datepicker?style=for-the-badge)](https://www.npmjs.com/package/@rehookify/datepicker)
-[![twitter](https://img.shields.io/twitter/follow/rehookify?color=rgb%2829%2C%20155%2C%20240%29&label=Follow&logo=twitter&style=for-the-badge
-)](https://twitter.com/rehookify)
+[![twitter](https://img.shields.io/twitter/follow/rehookify?color=rgb%2829%2C%20155%2C%20240%29&label=Follow&logo=twitter&style=for-the-badge)](https://twitter.com/rehookify)
 [![discord](https://img.shields.io/discord/1052153401712062474?color=%237289da&logo=discord&style=for-the-badge)](https://discord.gg/vyM2jhYa33)
+
 </div>
 
 ## #StandWithUkraine 💙💛
 
 We have war at our home 🇺🇦
 
-Help us in our struggle, 💰  [United24](https://u24.gov.ua/), [KOLO](https://www.koloua.com/en), [Come Back Alive](https://savelife.in.ua/en/)
+Help us in our struggle, 💰 [United24](https://u24.gov.ua/), [KOLO](https://www.koloua.com/en), [Come Back Alive](https://savelife.in.ua/en/)
 
 ## Features
 
@@ -58,7 +58,9 @@ const DatePicker = () => {
     <section>
       <header>
         <div>
-          <p>{month} {year}</p>
+          <p>
+            {month} {year}
+          </p>
         </div>
         <ul>
           {weekDays.map((day) => (
@@ -75,7 +77,7 @@ const DatePicker = () => {
       </ul>
     </section>
   );
-}
+};
 ```
 
 ### With modular context
@@ -167,11 +169,7 @@ const DatePicker = () => {
   const [selectedDates, onDatesChange] = useState<Date[]>([]);
   const {
     data: { weekDays, calendars },
-    propGetters: {
-      dayButton,
-      previousMonthButton,
-      nextMonthButton,
-    },
+    propGetters: { dayButton, previousMonthButton, nextMonthButton },
   } = useDatePicker({
     selectedDates,
     onDatesChange,
@@ -186,7 +184,7 @@ const DatePicker = () => {
 
     // In case you need any additional action with date
     console.log(date);
-  }
+  };
 
   // selectedDates is an array of dates
   // formatted with date.toLocaleDateString(locale, options)
@@ -196,7 +194,9 @@ const DatePicker = () => {
       <header>
         <div>
           <button {...previousMonthButton()}>&lt;</button>
-          <p>{month} {year}</p>
+          <p>
+            {month} {year}
+          </p>
           <button {...nextMonthButton()}>&gt;</button>
         </div>
         <ul>
@@ -208,17 +208,15 @@ const DatePicker = () => {
       <ul>
         {days.map((dpDay) => (
           <li key={dpDay.$date.toDateString()}>
-            <button
-              {...dayButton(dpDay, { onClick: onDayClick })}
-            >
+            <button {...dayButton(dpDay, { onClick: onDayClick })}>
               {dpDay.day}
             </button>
           </li>
         ))}
       </ul>
     </section>
-  )
-}
+  );
+};
 ```
 
 ### With context
@@ -239,11 +237,13 @@ const DatePicker = () => {
 
   return (
     <section>
-      <header>{month} {year}</header>
+      <header>
+        {month} {year}
+      </header>
       ...
     </section>
-  )
-}
+  );
+};
 
 const App = () => {
   const [selectedDates, onDatesChange] = useState<Date[]>([]);
@@ -259,7 +259,7 @@ const App = () => {
       <DatePicker />
     </DatePickerProvider>
   );
-}
+};
 ```
 
 ## API reference
@@ -331,7 +331,6 @@ interface DPData {
   weekDays: string[];
   years: CalendarYears[];
 }
-
 ```
 
 #### calendars
@@ -371,7 +370,7 @@ interface DPCalendar {
 Weekdays are an array of day names [`Mon`, `Tue`, `Wed`, ...]. The name format can be changed by `locale.weekdays` property 👀 [Locale configuration](#locale-configuration)
 
 ```ts
-type DPWeekdays = string[]
+type DPWeekdays = string[];
 ```
 
 #### months
@@ -501,7 +500,10 @@ type DayButton = (day: DPDay, config?: DPPropsGetterConfig) => DPPropGetter;
 Returns:
 
 ```ts
-type MonthButton = (month: DPMonth, config?: DPPropsGetterConfig) => DPPropGetter;
+type MonthButton = (
+  month: DPMonth,
+  config?: DPPropsGetterConfig,
+) => DPPropGetter;
 ```
 
 Params:
@@ -570,7 +572,6 @@ Params:
 - `props?: DPPropsGetterConfig`
 
 ✏️ NOTE: `onClick` - callback function doesn't get `date` as a second parameter.
-
 
 ### Actions
 
@@ -677,8 +678,7 @@ const [selectedDates, onDatesChange] = useState<Date[]>([]);
 const { data } = useDatePicker({
   selectedDates,
   onDatesChange,
-})
-
+});
 ```
 
 `focusDate` is initial value for the time-picker, if it is **null** or not present in the `selectedDates` array all time buttons will be disabled.
@@ -731,7 +731,7 @@ Calendars in `static` mode have 6 rows by 7 days. This prevents UI from jumping 
 
 🗓 February 2022 in `static` mode:
 
-``` text
+```text
 30 31 01 02 03 04 05
 06 07 08 09 10 11 12
 13 14 15 16 17 18 19
@@ -744,7 +744,7 @@ Calendars in `fluid` mode counts start and end offsets.
 
 🗓 February 2022 in `fluid` mode:
 
-``` text
+```text
 30 31 01 02 03 04 05
 06 07 08 09 10 11 12
 13 14 15 16 17 18 19
@@ -918,8 +918,7 @@ export interface DPState {
   selectedDates: Date[];
 }
 
-type UseDatePickerState = (config: DatePickerConfig) =>
-  DPState;
+type UseDatePickerState = (config: DatePickerConfig) => DPState;
 ```
 
 Under the hook, it uses `useReducer` to capture date-picker state and provides `dispatch` for state manipulation.

@@ -6,22 +6,22 @@ import { getCurrentYearPosition } from './get-current-year-position';
 export const createInitialState = (config: DPConfig): DPReducerState => {
   const {
     selectedDates,
-    forceOffsetDate,
+    offsetDate,
     focusDate,
     dates: { minDate, maxDate },
     years,
   } = config;
 
-  let offsetDate = undefined;
+  let initialOffsetDate = undefined;
 
-  if (forceOffsetDate) {
-    offsetDate = getCalendarStartDate(
+  if (offsetDate) {
+    initialOffsetDate = getCalendarStartDate(
       minDate,
       maxDate,
-      getCleanDate(forceOffsetDate),
+      getCleanDate(offsetDate),
     );
   } else {
-    offsetDate =
+    initialOffsetDate =
       selectedDates.length > 0
         ? selectedDates[selectedDates.length - 1]
         : getCalendarStartDate(minDate, maxDate, getCleanDate(newDate()));
@@ -30,7 +30,10 @@ export const createInitialState = (config: DPConfig): DPReducerState => {
   return {
     focusDate,
     rangeEnd: null,
-    offsetDate,
-    offsetYear: getCurrentYearPosition(getDateParts(offsetDate).Y, years),
+    offsetDate: initialOffsetDate,
+    offsetYear: getCurrentYearPosition(
+      getDateParts(initialOffsetDate).Y,
+      years,
+    ),
   };
 };

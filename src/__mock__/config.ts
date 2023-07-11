@@ -1,7 +1,7 @@
 export const DEFAULT_CONFIG = {
   selectedDates: [],
   focusDate: null,
-  forceOffsetDate: null,
+  offsetDate: null,
   calendar: {
     mode: 'static',
     offsets: [0],

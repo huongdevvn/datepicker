@@ -1,6 +1,6 @@
 {
-  "name": "react-datepicker-headless",
-  "version": "1.0.3",
+  "name": "use-datepicker-ui",
+  "version": "1.0.0",
   "description": "The ultimate tool to create a date, range and time picker in your React applications.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.mjs",
@@ -37,7 +37,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rehookify/datepicker.git"
+    "url": "git+https://github.com/huongdevvn/use-datepicker-ui.git"
   },
   "keywords": [
     "react",
@@ -60,9 +60,9 @@
   "author": "<pavel.feschenko@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rehookify/datepicker/issues"
+    "url": "https://github.com/huongdevvn/use-datepicker-ui/issues"
   },
-  "homepage": "https://github.com/rehookify/datepicker#readme",
+  "homepage": "https://github.com/huongdevvn/use-datepicker-ui#readme",
   "devDependencies": {
     "@babel/core": "^7.22.5",
     "@babel/preset-env": "^7.22.5",
